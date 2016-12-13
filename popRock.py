@@ -1,41 +1,35 @@
-# This is based on spotiPython5h--the final working original grabbing albums and tracks.
-# This version will also grab popularity for each album and track.
-
 from urllib2 import urlopen
 from json import load
-import time
 
-date = time.strftime("%b %d, %y")
-
+# Artists I'll work with
 aliceCooper = "3EhbVgyfGd7HkpsagwL9GS"
-album_list = []
-# create a text file in which to put albums
-f = open("alice6.htm", "w")
 
-#function to build URL
-def build_artist_album_getting_url(rockstar):
-    url = 'http://api.spotify.com'
+# create a file in which to put data
+f = open("alice5.htm", "w")
+
+# function to build URL for getting artist's albums
+def build_artist_albums_getting_url(rockstar):
+    artistAlbumsURL = 'http://api.spotify.com'
     # key = '3afe326cd28144238acc48c5cff4c156'
     # url = url + key
-    # add artist ID
-    url += '/v1/artists/'
-    url += rockstar #aliceCooper
-    # GET artist's albums
-    url += '/albums'
-    # add USA market
-    url += '?market=US'
-    # type is album as opposed to single, etc
-    url += '&album_type=album'
-    # limit to 50 because geez there's a lot of compilations and stuff in no kind of order
-    url += '&limit=50'
-    return url
-    # print url
 
-# function to send URL and get albums
-def call_artist_album_getting_url(url):
+    artistAlbumsURL += '/v1/artists/'
+    # add artist ID
+    artistAlbumsURL += rockstar
+    # GET artist's albums
+    artistAlbumsURL += '/albums'
+    # add USA market
+    artistAlbumsURL += '?market=US'
+    # type is album as opposed to single, etc
+    artistAlbumsURL += '&album_type=album'
+    # limit to 50 because geez there's a lot of compilations and stuff in no kind of order
+    artistAlbumsURL += '&limit=50'
+    return artistAlbumsURL
+
+# function to send URL and get artist's albums
+def call_artist_albums_getting_url(url):
     json_obj = urlopen(url)
     data = load(json_obj)
-    f.write("<!--" + date + "-->" + "\n")
     f.write("<html>" + "\n" + "<head></head>" + "\n" + "<body>" + "\n" + "<table>" + "\n")
     # for each album ...
     for item in data['items']:
@@ -63,5 +57,5 @@ def call_album_getting_url(url2):
 
 
 # Get albums
-url = build_artist_album_getting_url(aliceCooper)
-call_artist_album_getting_url(url)
+artistAlbumsURL = build_artist_albums_getting_url(aliceCooper)
+call_artist_albums_getting_url(artistAlbumsURL)
