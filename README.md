@@ -1,20 +1,7 @@
 # myRockinApp
-Practice with Spotify API and Python
-Behold …
+Python script using the SpotifyWebAPI to get data about an artist, their albums, and those albums' songs to store in a MySQL database and track popularity over time as well as comparing popularity to similar data from other artists/albums/songs.
 
-I, king of the world, the greatest Python programmer in history, have succeed in the following. I wrote a script that does this wicked coolness using the Spotify API:
+## Status
+Abandoned.
 
-    Creates and opens an HTML file then inserts some opening skeleton tags
-    Takes an artist ID
-    Gets that artist’s albums
-        For each album
-            puts the album title in
-            tags
-            inserts
-            uses the album ID to get that album’s tracks
-                For each track
-                    puts the track name in
-                    tags
-            inserts
-
-    inserts some closing skeleton tags and closes the HTML file
+Moved on to [myRockinApp](https://github.com/jotasprout/myRockinApp) (Javascript), then [Pop-PHP](https://github.com/jotasprout/Pop-PHP) (PHP and MySQL) because I couldn't get the objects to build as completely as I wanted. 
